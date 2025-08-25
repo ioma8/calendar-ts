@@ -4,6 +4,9 @@ A modern TypeScript rewrite of the Czech calendar generator using Next.js, built
 
 ## Features
 
+- ✅ **Modern UI design** with glassmorphism and gradient effects
+- ✅ **Quick download tables** for current and next year months
+- ✅ **Current month highlighting** for easy identification
 - ✅ **Generates Czech monthly calendars** in PDF format (A4 landscape)
 - ✅ **Web interface** with month/year selection
 - ✅ **PDF download** functionality via API
