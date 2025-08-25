@@ -98,19 +98,19 @@ export default function CalendarTables() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-slate-800 mb-4">
-          Quick Download
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-slate-800 mb-3">
+          Rychlé Stažení
         </h2>
         <p className="text-slate-600 text-lg">
-          Click any month to instantly download its calendar
+          Klikněte na libovolný měsíc pro okamžité stažení kalendáře
         </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Current Year */}
-        <div className="bg-white/40 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-white/20">
-          <div className="flex items-center justify-center mb-8">
+        <div className="bg-white/40 backdrop-blur-sm p-6 rounded-3xl shadow-xl border border-white/20">
+          <div className="flex items-center justify-center mb-6">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-lg">{currentYear.toString().slice(-2)}</span>
@@ -119,7 +119,7 @@ export default function CalendarTables() {
                 {currentYear}
               </h3>
               <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
-                Current
+                Aktuální
               </span>
             </div>
           </div>
@@ -137,8 +137,8 @@ export default function CalendarTables() {
         </div>
 
         {/* Next Year */}
-        <div className="bg-white/40 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-white/20">
-          <div className="flex items-center justify-center mb-8">
+        <div className="bg-white/40 backdrop-blur-sm p-6 rounded-3xl shadow-xl border border-white/20">
+          <div className="flex items-center justify-center mb-6">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-lg">{nextYear.toString().slice(-2)}</span>
@@ -147,7 +147,7 @@ export default function CalendarTables() {
                 {nextYear}
               </h3>
               <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-semibold">
-                Next
+                Následující
               </span>
             </div>
           </div>

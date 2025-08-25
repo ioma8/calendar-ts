@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 
     if (!monthStr || !yearStr) {
       return NextResponse.json(
-        { error: 'Month and year parameters are required' },
+        { error: 'Parametry měsíc a rok jsou povinné' },
         { status: 400 }
       );
     }
@@ -32,14 +32,14 @@ export async function GET(request: NextRequest) {
 
     if (isNaN(month) || month < 1 || month > 12) {
       return NextResponse.json(
-        { error: 'Invalid month. Must be between 1 and 12' },
+        { error: 'Neplatný měsíc. Musí být mezi 1 a 12' },
         { status: 400 }
       );
     }
 
     if (isNaN(year) || year < 1900 || year > 2100) {
       return NextResponse.json(
-        { error: 'Invalid year. Must be between 1900 and 2100' },
+        { error: 'Neplatný rok. Musí být mezi 1900 a 2100' },
         { status: 400 }
       );
     }
@@ -74,7 +74,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Error generating PDF:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Interní chyba serveru' },
       { status: 500 }
     );
   }
