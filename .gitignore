@@ -1,0 +1,41 @@
+.cache
+node_modules
+
+# Next.js build output
+.next/
+out/
+dist/
+build/
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+jest-*
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment files
+.env*
+
+# IDE files
+.DS_Store
+.vscode/
+.idea/
+
+# Public assets
+public/*.svg
+public/*.ico
+
+# Test files and folders
+src/**/*.test.ts
+src/**/*.test.tsx
+src/**/__tests__/
+
+# Package manager locks
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
