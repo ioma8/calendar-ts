@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
     try {
       await fs.access(cachedFilePath);
       const cachedPdf = await fs.readFile(cachedFilePath);
-      return new NextResponse(cachedPdf, {
+      return new NextResponse(new Uint8Array(cachedPdf), {
         status: 200,
         headers: {
           'Content-Type': 'application/pdf',
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
     const pdfBuffer = await generateCalendarPdf({ year, month });
     await fs.writeFile(cachedFilePath, pdfBuffer);
 
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(new Uint8Array(pdfBuffer), {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',

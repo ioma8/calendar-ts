@@ -25,7 +25,8 @@ export async function generateCalendarPdf(options: PdfGenerationOptions): Promis
   const pdfDoc = await PDFDocument.create();
   
   // Register fontkit for custom font support using dynamic import
-  const fontkit = await import('fontkit');
+  const fontkitModule = await import('fontkit');
+  const fontkit = ('default' in fontkitModule ? fontkitModule.default : fontkitModule) as Parameters<typeof pdfDoc.registerFontkit>[0];
   pdfDoc.registerFontkit(fontkit);
   
   // Add a page with A4 landscape dimensions

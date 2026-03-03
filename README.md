@@ -1,96 +1,62 @@
-# Czech Calendar - TypeScript Next.js Version
+# Cesky Kalendar (Next.js + TypeScript)
 
-A modern TypeScript rewrite of the Czech calendar generator using Next.js, built with Test-Driven Development (TDD) principles.
+Online generator ceskych mesicnich kalendaru s exportem do PDF.
 
 ## Features
 
-- ✅ **Modern UI design** with glassmorphism and gradient effects
-- ✅ **Quick download tables** for current and next year months
-- ✅ **Current month highlighting** for easy identification
-- ✅ **Generates Czech monthly calendars** in PDF format (A4 landscape)
-- ✅ **Web interface** with month/year selection
-- ✅ **PDF download** functionality via API
-- ✅ **Fully typed** with TypeScript
-- ✅ **Comprehensive tests** written with TDD approach
-- ✅ **Vercel-ready** deployment
-- ✅ **Responsive design** with Tailwind CSS
+- Generate monthly Czech calendars as PDF (A4 landscape)
+- Quick month/year selection UI
+- Current and next year quick tables
+- Typed API route for PDF generation (`/api/generate`)
+- Production metadata and social cards (Open Graph + Twitter)
+- Full favicon/app icon set generated from project icon source
 
-## Getting Started
+## Local Development
 
-### Development
 ```bash
-npm install        # Install dependencies
-npm run dev        # Start development server
-npm test          # Run all tests
-npm run build     # Build for production
+npm install
+npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the application.
+App runs at `http://localhost:3000`.
 
-## Architecture
+## Build and Test
 
-### Core Libraries (`src/lib/`)
-- **`calendar.ts`** - Calendar data generation, Czech month/day names
-- **`pdf-generator.ts`** - PDF creation using pdf-lib
-- **`fonts.ts`** - Font handling and ASCII-safe Czech text
-
-### API Routes (`src/app/api/`)
-- **`/api/generate`** - PDF generation endpoint with validation
-
-### React Components (`src/components/`)
-- **`CalendarForm`** - Month/year selection form with download handling
-
-## Testing
-
-Built with comprehensive test coverage using Jest and React Testing Library:
 ```bash
-npm test src/lib                    # Core library tests
-npm test src/components             # Component tests  
-npm test src/app/api               # API tests
+npm test
+npm run build
 ```
 
-## TDD Implementation
+## API
 
-This project was built using Test-Driven Development:
+Generate PDF:
 
-1. **Red** - Write failing tests first
-2. **Green** - Implement minimal code to pass tests
-3. **Refactor** - Improve code while keeping tests green
-
-## Deployment
-
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Vercel will auto-detect Next.js and deploy
-3. No additional configuration needed
-
-## API Usage
-
-### Generate Calendar PDF
-```
+```http
 GET /api/generate?month=8&year=2025
 ```
 
-**Parameters:**
-- `month` - Month number (1-12)
-- `year` - Year (1900-2100)
+Parameters:
+- `month`: 1-12
+- `year`: 1900-2100
 
-**Response:**
-- PDF file download with filename `kalendar_YYYY-MM.pdf`
+Response:
+- `application/pdf` attachment (`kalendar_YYYY-MM.pdf`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Branding and Icons
 
-## Learn More
+- Source icon: `public/icon.svg`
+- Generated assets: `public/favicon.ico`, `public/favicon-16x16.png`, `public/favicon-32x32.png`, `public/apple-touch-icon.png`, `public/android-chrome-192x192.png`, `public/android-chrome-512x512.png`
+- Regenerate icons:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+node scripts/generate-favicons.mjs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Recommended: Vercel
+- Current metadata base URL: `https://czech-calendar.vercel.app`
 
-## Deploy on Vercel
+## Support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Buy me a coffee: https://buymeacoffee.com/ioma8
