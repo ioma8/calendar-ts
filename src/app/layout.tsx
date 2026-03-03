@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://czech-calendar.vercel.app";
+const siteUrl = "https://ceskykalendar.vercel.app";
 const siteName = "Český Kalendář";
 const siteTitle = "Český Kalendář | Generátor měsíčních kalendářů PDF";
 const siteDescription =

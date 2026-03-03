@@ -55,7 +55,7 @@ node scripts/generate-favicons.mjs
 ## Deployment
 
 - Recommended: Vercel
-- Current metadata base URL: `https://czech-calendar.vercel.app`
+- Current metadata base URL: `https://ceskykalendar.vercel.app`
 
 ## Vercel Readiness Notes
 
