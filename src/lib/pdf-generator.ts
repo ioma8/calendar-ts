@@ -57,20 +57,12 @@ export async function generateCalendarPdf(options: PdfGenerationOptions): Promis
     font: titleFont,
     color: primaryColor,
   });
-  
-  // Add subtle line under title
-  page.drawLine({
-    start: { x: 70, y: 520 },
-    end: { x: 772, y: 520 },
-    thickness: 1,
-    color: rgb(0.9, 0.9, 0.9),
-  });
-  
+
   // Calculate modern grid dimensions with better spacing
-  const startX = 70;
-  const startY = 480;
-  const gridWidth = 702; // 842 - 70 - 70 (more balanced margins)
-  const gridHeight = 360; // More compact grid
+  const startX = 50;
+  const startY = 520;
+  const gridWidth = 732; // 842 - 70 - 70 (more balanced margins)
+  const gridHeight = 480; // More compact grid
   const cellWidth = gridWidth / 7;
   const cellHeight = gridHeight / (calendarData.weeks.length + 1); // +1 for header
   
@@ -84,7 +76,7 @@ export async function generateCalendarPdf(options: PdfGenerationOptions): Promis
   });
   
   // Add subtle footer
-  const footerText = `Vygenerováno ${new Date().toLocaleDateString('cs-CZ')}`;
+/*   const footerText = `Vygenerováno ${new Date().toLocaleDateString('cs-CZ')}`;
   const footerWidth = textFont.widthOfTextAtSize(footerText, 8);
   page.drawText(footerText, {
     x: (842 - footerWidth) / 2,
@@ -92,7 +84,7 @@ export async function generateCalendarPdf(options: PdfGenerationOptions): Promis
     size: 8,
     font: textFont,
     color: rgb(0.6, 0.6, 0.6),
-  });
+  }); */
   
   // Serialize the PDF document to bytes
   const pdfBytes = await pdfDoc.save();
