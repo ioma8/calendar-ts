@@ -57,6 +57,25 @@ node scripts/generate-favicons.mjs
 - Recommended: Vercel
 - Current metadata base URL: `https://czech-calendar.vercel.app`
 
+## Vercel Readiness Notes
+
+- Rendering:
+  - Home page is prerendered as static content.
+  - PDF generation API uses Node.js runtime (`src/app/api/generate/route.ts`).
+- Caching:
+  - `/api/generate` uses Vercel Blob as shared persistent cache with deterministic keys (`calendar-pdf/<year>/<month>.pdf`).
+  - If a cached blob exists, PDF generation is skipped and cached bytes are returned.
+  - Blob cache requires `BLOB_READ_WRITE_TOKEN` in Vercel project environment variables.
+  - Route also sets CDN cache headers for fast global delivery.
+- Observability:
+  - Vercel Analytics integrated in root layout.
+  - Vercel Speed Insights integrated in root layout.
+- Security defaults:
+  - `X-Content-Type-Options: nosniff`
+  - `X-Frame-Options: DENY`
+  - `Referrer-Policy: strict-origin-when-cross-origin`
+  - `X-Powered-By` header disabled.
+
 ## Support
 
 - Buy me a coffee: https://buymeacoffee.com/ioma8
