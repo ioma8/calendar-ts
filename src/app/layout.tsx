@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://ceskykalendar.vercel.app";
+const siteUrl = getSiteUrl();
 const siteName = "Český Kalendář";
 const siteTitle = "Český Kalendář | Generátor měsíčních kalendářů PDF";
 const siteDescription =

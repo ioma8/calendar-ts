@@ -12,11 +12,13 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from 'react-share';
+import { getSiteUrl } from '@/lib/site-url';
 
-const shareUrl = 'https://ceskykalendar.vercel.app';
 const shareTitle = 'Český Kalendář - generátor měsíčních kalendářů PDF';
 
 export default function SocialShareButtons() {
+  const shareUrl = getSiteUrl();
+
   return (
     <div className="flex flex-col items-center gap-3">
       <p className="text-sm text-slate-500">Sdílet aplikaci</p>

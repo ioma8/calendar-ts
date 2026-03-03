@@ -1,15 +1,17 @@
 import CalendarForm from '@/components/CalendarForm';
 import CalendarTables from '@/components/CalendarTables';
 import SocialShareButtons from '@/components/SocialShareButtons';
+import { getSiteUrl } from '@/lib/site-url';
 
 export default function Home() {
+  const siteUrl = getSiteUrl();
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'WebSite',
         name: 'Český Kalendář',
-        url: 'https://ceskykalendar.vercel.app',
+        url: siteUrl,
         inLanguage: 'cs-CZ',
         description: 'Online generátor českých měsíčních kalendářů s exportem do PDF.',
       },
@@ -18,7 +20,7 @@ export default function Home() {
         name: 'Český Kalendář',
         applicationCategory: 'ProductivityApplication',
         operatingSystem: 'Web',
-        url: 'https://ceskykalendar.vercel.app',
+        url: siteUrl,
         inLanguage: 'cs-CZ',
         offers: {
           '@type': 'Offer',
