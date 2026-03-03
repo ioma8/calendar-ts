@@ -61,7 +61,7 @@ export async function generateCalendarPdf(options: PdfGenerationOptions): Promis
   // Calculate modern grid dimensions with better spacing
   const startX = 50;
   const startY = 520;
-  const gridWidth = 732; // 842 - 70 - 70 (more balanced margins)
+  const gridWidth = 742; // 842 - 50 - 50 (more balanced margins)
   const gridHeight = 480; // More compact grid
   const cellWidth = gridWidth / 7;
   const cellHeight = gridHeight / (calendarData.weeks.length + 1); // +1 for header
