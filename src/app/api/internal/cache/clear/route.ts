@@ -1,27 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { del, list } from '@vercel/blob';
-import fs from 'node:fs/promises';
-import path from 'node:path';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 30;
 
-const LOCAL_CACHE_DIR = process.env.VERCEL
-  ? path.resolve(process.env.TMPDIR ?? '/tmp', 'calendar-cache')
-  : path.resolve(process.cwd(), '.cache');
 const BLOB_PREFIX = 'calendar-pdf/';
-
-async function clearLocalCache(): Promise<number> {
-  try {
-    const entries = await fs.readdir(LOCAL_CACHE_DIR, { withFileTypes: true });
-    const files = entries.filter((entry) => entry.isFile());
-    await Promise.all(files.map((file) => fs.unlink(path.join(LOCAL_CACHE_DIR, file.name))));
-    return files.length;
-  } catch {
-    return 0;
-  }
-}
 
 async function clearBlobCache(): Promise<number> {
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
@@ -52,14 +36,10 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const [localDeleted, blobDeleted] = await Promise.all([
-      clearLocalCache(),
-      clearBlobCache(),
-    ]);
+    const blobDeleted = await clearBlobCache();
 
     return NextResponse.json({
       ok: true,
-      localDeleted,
       blobDeleted,
     });
   } catch (error) {

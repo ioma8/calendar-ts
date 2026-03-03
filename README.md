@@ -65,7 +65,10 @@ node scripts/generate-favicons.mjs
 - Caching:
   - `/api/generate` uses Vercel Blob as shared persistent cache with deterministic keys (`calendar-pdf/<year>/<month>.pdf`).
   - If a cached blob exists, PDF generation is skipped and cached bytes are returned.
+  - If Blob token is missing (local dev), PDFs are generated on demand.
+  - Runtime logs include cache source (`served-from-blob` or `generated`).
   - Blob cache requires `BLOB_READ_WRITE_TOKEN` in Vercel project environment variables.
+  - During build (`postbuild`), cache is prewarmed for all months of the current and next year (`scripts/prewarm-pdf-cache.ts`).
   - Route also sets CDN cache headers for fast global delivery.
 - Observability:
   - Vercel Analytics integrated in root layout.
