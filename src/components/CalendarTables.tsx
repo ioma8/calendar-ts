@@ -10,10 +10,12 @@ export default function CalendarTables() {
   const nextYear = currentYear + 1;
   
   const [loadingStates, setLoadingStates] = useState<Record<string, boolean>>({});
+  const [error, setError] = useState<string | null>(null);
 
   const downloadCalendar = async (month: number, year: number) => {
     const key = `${year}-${month}`;
     setLoadingStates(prev => ({ ...prev, [key]: true }));
+    setError(null);
 
     try {
       const response = await fetch(`/api/generate?month=${month}&year=${year}`);
@@ -33,6 +35,7 @@ export default function CalendarTables() {
       URL.revokeObjectURL(url);
     } catch (err) {
       console.error('Error downloading calendar:', err);
+      setError('Kalendář se nepodařilo stáhnout. Zkuste to prosím znovu.');
     } finally {
       setLoadingStates(prev => ({ ...prev, [key]: false }));
     }
@@ -46,6 +49,8 @@ export default function CalendarTables() {
       <button
         onClick={() => downloadCalendar(month, year)}
         disabled={isLoading}
+        aria-busy={isLoading}
+        aria-label={`Stáhnout kalendář ${CZECH_MONTHS[month - 1]} ${year}`}
         className={`
           group relative p-4 rounded-2xl border transition-all duration-200 text-left w-full
           ${isCurrent 
@@ -53,6 +58,7 @@ export default function CalendarTables() {
             : 'bg-white/60 hover:bg-white/80 border-slate-200 hover:border-blue-300 hover:shadow-lg'
           }
           ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
         `}
       >
         <div className="flex items-center justify-between">
@@ -106,6 +112,12 @@ export default function CalendarTables() {
           Klikněte na libovolný měsíc pro okamžité stažení kalendáře
         </p>
       </div>
+
+      {error && (
+        <div role="alert" aria-live="assertive" className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm text-center">
+          {error}
+        </div>
+      )}
 
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Current Year */}

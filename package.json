@@ -19,7 +19,8 @@
     "next": "^16.1.6",
     "pdf-lib": "^1.17.1",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-share": "^5.2.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -41,7 +41,7 @@ export default function CalendarForm() {
 
   return (
     <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4" aria-busy={isLoading}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
           <div>
             <label htmlFor="month" className="block text-sm font-medium text-slate-700 mb-2">
@@ -80,6 +80,7 @@ export default function CalendarForm() {
             <button
               type="submit"
               disabled={isLoading}
+              aria-busy={isLoading}
               className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium shadow-lg hover:shadow-xl relative"
             >
               <div className="flex items-center justify-center">
@@ -107,7 +108,7 @@ export default function CalendarForm() {
         </div>
 
         {error && (
-          <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm text-center">
+          <div role="alert" aria-live="assertive" className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm text-center">
             {error}
           </div>
         )}
