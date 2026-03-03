@@ -14,7 +14,9 @@ const CACHE_HEADERS = {
   'Vercel-CDN-Cache-Control': 'public, s-maxage=31536000, stale-while-revalidate=604800',
 };
 
-const LOCAL_CACHE_DIR = path.resolve(process.cwd(), '.cache');
+const LOCAL_CACHE_DIR = process.env.VERCEL
+  ? path.resolve(process.env.TMPDIR ?? '/tmp', 'calendar-cache')
+  : path.resolve(process.cwd(), '.cache');
 
 async function ensureLocalCacheDirExists(): Promise<void> {
   try {

@@ -7,7 +7,9 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 30;
 
-const LOCAL_CACHE_DIR = path.resolve(process.cwd(), '.cache');
+const LOCAL_CACHE_DIR = process.env.VERCEL
+  ? path.resolve(process.env.TMPDIR ?? '/tmp', 'calendar-cache')
+  : path.resolve(process.cwd(), '.cache');
 const BLOB_PREFIX = 'calendar-pdf/';
 
 async function clearLocalCache(): Promise<number> {
